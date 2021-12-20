@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Samples</title>
+  </head>
+  <body>
+    <!-- Target container -->
+    <div id="root"></div>
+
+    <!-- React library & ReactDOM (Development Version)-->
+    <script
+  src="https://unpkg.com/react@16/umd/react.development.js">
+  </script>
+    <script
+  src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+  </script>
+
+    <script>
+      // // Pure React and JavaScript code
+      // const dish = React.createElement("h1", {id:"recipe"}, "Baked Salmon");
+      // ReactDOM.render(dish, document.getElementById("root"));
+      
+      //We can also render more than one element using render method and its new in React 17
+      // const dish = React.createElement("h1", {id:"recipe"}, "Baked Salmon");
+      // const dessert = React.createElement("h2", null, "Coconut cream Pie");
+      // ReactDOM.render([dish, dessert], document.getElementById("root"));
+
+      //Creating childrens with props.children
+      // const list = React.createElement(
+      //   "ul",
+      //   null,
+      //   React.createElement("li", null, "2 lb salmon"),
+      //   React.createElement("li", null, "5 sprigs"),
+      //   React.createElement("li", null, "2 tbs olive oil")
+      // );
+
+      // ReactDOM.render([dish, dessert, list], document.getElementById('root'));
+
+      //Creating a recipe for a dish
+      const recipe = React.createElement(
+                        "section",
+                        {id: "baked salmon"},
+                        React.createElement("h1", null, "Baked Salmon"),
+                        React.createElement(
+                          "ul",
+                          {className: "ingredients"},
+                          React.createElement("li" , null, "2 lb salmon"),
+                          React.createElement("li" , null, "5 sprigs")
+                        ),
+                        React.createElement(
+                          "section",
+                          {className: "instructions"},
+                          React.createElement("h2", null, "Cooking inst"),
+                          React.createElement("p", null, "Preheat oven"),
+                          React.createElement("p", null, "Take out of oven")
+                        )
+                      );
+
+      // ReactDOM.render(recipe, document.getElementById('root'));
+
+      const items = [
+        '2 lb salmon',
+        '5 sprigs rosemary',
+        '2 tbs olive oil',
+      ];
+
+      const ing = React.createElement(
+        "ul",
+        {className: "ingredients"},
+        items.map( (item, i) => React.createElement("li", {key: i}, item))
+      );
+
+      ReactDOM.render(ing, document.getElementById('root'));
+
+
+    </script>
+  </body>
+</html>
