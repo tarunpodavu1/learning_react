@@ -38,42 +38,75 @@
       // ReactDOM.render([dish, dessert, list], document.getElementById('root'));
 
       //Creating a recipe for a dish
-      const recipe = React.createElement(
-                        "section",
-                        {id: "baked salmon"},
-                        React.createElement("h1", null, "Baked Salmon"),
-                        React.createElement(
-                          "ul",
-                          {className: "ingredients"},
-                          React.createElement("li" , null, "2 lb salmon"),
-                          React.createElement("li" , null, "5 sprigs")
-                        ),
-                        React.createElement(
-                          "section",
-                          {className: "instructions"},
-                          React.createElement("h2", null, "Cooking inst"),
-                          React.createElement("p", null, "Preheat oven"),
-                          React.createElement("p", null, "Take out of oven")
-                        )
-                      );
+      // const recipe = React.createElement(
+      //                   "section",
+      //                   {id: "baked salmon"},
+      //                   React.createElement("h1", null, "Baked Salmon"),
+      //                   React.createElement(
+      //                     "ul",
+      //                     {className: "ingredients"},
+      //                     React.createElement("li" , null, "2 lb salmon"),
+      //                     React.createElement("li" , null, "5 sprigs")
+      //                   ),
+      //                   React.createElement(
+      //                     "section",
+      //                     {className: "instructions"},
+      //                     React.createElement("h2", null, "Cooking inst"),
+      //                     React.createElement("p", null, "Preheat oven"),
+      //                     React.createElement("p", null, "Take out of oven")
+      //                   )
+      //                 );
 
       // ReactDOM.render(recipe, document.getElementById('root'));
 
-      const items = [
-        '2 lb salmon',
-        '5 sprigs rosemary',
-        '2 tbs olive oil',
+      // const items = [
+      //   '2 lb salmon',
+      //   '5 sprigs rosemary',
+      //   '2 tbs olive oil',
+      // ];
+
+      // const ing = React.createElement(
+      //   "ul",
+      //   {className: "ingredients"},
+      //   items.map( (item, i) => React.createElement("li", {key: i}, item))
+      // );
+
+      // ReactDOM.render(ing, document.getElementById('root'));
+
+      // function IngredientsList(){
+      //   return React.createElement(
+      //     "ul",
+      //     {className: "ingredientsClass"},
+      //     React.createElement("li", null, "2 cup butter"),
+      //     React.createElement("li", null, "1 cup bread"),
+      //     React.createElement("li", null, "Peanut")
+      //   );
+      // }
+
+      // ReactDOM.render(IngredientsList(), document.getElementById("root"));
+      // ReactDOM.render(
+      //   React.createElement(IngredientsList, null, null),
+      //     document.getElementById("root")
+      // );
+
+      const secretIngredients = [
+        "1 cup sugar",
+        "1 cup butter",
+        "2 eggs",
+        "i cup peanut"
       ];
 
-      const ing = React.createElement(
-        "ul",
-        {className: "ingredients"},
-        items.map( (item, i) => React.createElement("li", {key: i}, item))
+      function IngredientsList(props){
+          return React.createElement(
+            "ul",
+            {className: "ingredientClass"},
+            props.items.map((ingredient, i) => React.createElement("li", {key: i}, ingredient))
+          );
+      }
+
+      ReactDOM.render(
+        React.createElement(IngredientsList, {items: secretIngredients}, null), document.getElementById("root")
       );
-
-      ReactDOM.render(ing, document.getElementById('root'));
-
-
     </script>
   </body>
 </html>

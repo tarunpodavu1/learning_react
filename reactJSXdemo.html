@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Examples</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React Library & React DOM -->
+    <script
+  src="https://unpkg.com/react@16.8.6/umd/react.development.js">
+  </script>
+    <script
+  src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js">
+  </script>
+    <script
+  src="https://unpkg.com/@babel/standalone/babel.min.js">
+  </script>
+
+    <script type="text/babel">
+      // JSX code here. Or link to separate JavaScript file that contains JSX.
+      const data = [
+        {
+          name: "Samosa",
+          things: ["Aloo", "Maida", "sauce"],
+          steps:[
+            "heat the oil",
+            "spin the maida",
+            "add aaloo",
+            "fry it in oil"
+          ]
+        },
+        {
+          name: "Jalebi",
+          things: ["Sugar", "Jaggery"],
+          steps: [
+            "Heat the oil",
+            "Mix the flur with sugar",
+            "Add jaggery",
+            "fry it"
+          ]
+        },
+        {
+          name: "kachori",
+          things:["Onion", "Golgappa", "Lemon", "curd"],
+          steps:[
+            "pour the golgappa on pan",
+            "Add lemon on it",
+            "Add some onion",
+            "Serve it with sauce and curd"
+          ]
+        }
+      ];
+
+
+      function Menu({title, recipes}){
+          return (
+            <article>
+              <header>
+                <h1>{title}</h1>
+              </header>
+              <div className="recipes">
+                  {recipes.map((recipe, i) => (
+                    <Recipe
+                      key={i}
+                      name={recipe.name}
+                      things={recipe.things}
+                      steps={recipe.steps}
+                    />
+                  ))}
+              </div>
+            </article>
+          );
+      }
+
+      function Recipe({name, things, steps}){
+        return (
+          <section>
+            <h2>{name}</h2>
+            <ul>
+              {things.map((thing, i) => (
+                <li key={i}> {thing}</li>
+              ))}  
+            </ul>
+            
+            <h3>Steps</h3>
+              {steps.map((step, i)=>(
+                <p key={i}>{step}</p>
+              ))}
+          </section>
+        );
+      }
+      ReactDOM.render(<Menu recipes={data} title=" Normie Eateries"/>, document.getElementById("root"));
+        
+    </script>
+  </body>
+</html>

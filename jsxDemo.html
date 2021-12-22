@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Examples</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React Library & React DOM -->
+    <script
+  src="https://unpkg.com/react@16.8.6/umd/react.development.js">
+  </script>
+    <script
+  src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js">
+  </script>
+    <script
+  src="https://unpkg.com/@babel/standalone/babel.min.js">
+  </script>
+
+    <script type="text/babel">
+      // JSX code here. Or link to separate JavaScript file that contains JSX.
+        //Using React Fragments
+      function Cat({name}){
+            return (
+                <>
+                <h1> Cats name is {name}</h1>
+                <p>Yo!!!</p>
+                </>
+            );
+      }
+
+      ReactDOM.render(<Cat name="poppy"/>, document.getElementById("root"));
+    </script>
+  </body>
+</html>
