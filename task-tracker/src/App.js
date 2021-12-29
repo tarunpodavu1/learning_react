@@ -88,8 +88,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            exact
-            render={(props) => (
+            element={
               <>
                 {showAddTask && <AddTask onAdd={addTask} />}
                 {tasks.length > 0 ? (
@@ -102,11 +101,9 @@ function App() {
                   "No Tasks left to show"
                 )}
               </>
-            )}
+            }
           />
-        </Routes>
 
-        <Routes>
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
