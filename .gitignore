@@ -26,3 +26,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+react-router-project/.firebaserc
+react-router-project/firebase.json
+react-router-project/.firebase/hosting.YnVpbGQ.cache
