@@ -1,4 +1,4 @@
-import { useContext } from 'react/cjs/react.development';
+import { useContext } from 'react';
 import FeedbackContext from '../context/FeedbackContext';
 
 const FeedbackStats = () => {
