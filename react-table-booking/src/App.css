@@ -1,0 +1,69 @@
+.App {
+  background-image: url(../src/restaurant.jpg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  max-width: 200px;
+  margin: 16px;
+  text-align: center;
+  font-family: arial;
+  float: left;
+}
+
+#card {
+  text-align: center;
+}
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  float: left;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+.card ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 5px;
+  overflow: hidden;
+  float: left;
+}
+.container {
+  margin-left: 7%;
+}
+#image {
+  position: relative;
+  width: 100%; /* for IE 6 */
+}
+
+h2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+h2 span {
+  color: white;
+  font: bold 24px/45px Helvetica, Sans-Serif;
+  letter-spacing: -1px;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+}
