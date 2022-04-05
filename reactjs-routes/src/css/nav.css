@@ -1,0 +1,34 @@
+.div{
+    margin: 5px;
+    width: 1350px;
+    height: 50px;
+    background-color: darkslategrey;
+    color: white;
+    border-radius: 3px;
+}
+
+.main{
+    position: absolute;
+    top: -7px;
+    left: 15px;
+}
+
+.home{
+    position: absolute;
+    top: 15px;
+    right: 110px;
+}
+
+.text{
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 13px;
+    right: 40px;
+    font-size: 23px;
+}
+
+.text:hover{
+    text-decoration: underline;
+}
+

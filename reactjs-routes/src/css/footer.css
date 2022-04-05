@@ -1,0 +1,33 @@
+.footer {
+    display: flex;
+    margin-left: 500px;
+    margin-top: 100px;
+  }
+  
+  .link {
+    width: 200px;
+    height: 30px;
+    background-color: darkslategrey;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  .link1 {
+    margin-left: 30px;
+    width: 200px;
+    height: 30px;
+    background-color: darkslategrey;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  .link1:hover {
+    text-decoration: underline;
+  }
+  

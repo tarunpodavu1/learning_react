@@ -1,0 +1,29 @@
+.head {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .hcard {
+    padding: 2%;
+    margin-left: 200px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 1.5%;
+    text-align: center;
+    font-family: arial;
+    float: left;
+    width: 200px;
+    height: 300px;
+    background: #4ea5a9;
+    color: white;
+    outline: 2px solid rgb(199, 190, 190);
+    outline-offset: 10px;
+  }
+  
+  .footer{
+    position: absolute;
+    bottom: 15px;
+  }
+  
