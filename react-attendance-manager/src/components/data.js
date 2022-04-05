@@ -1,0 +1,23 @@
+export const studentInfo = [
+    { id: 1, type: "Roll ", status: "init" },
+    { id: 2, type: "Roll ", status: "init" },
+    { id: 3, type: "Roll ", status: "init" },
+    { id: 4, type: "Roll ", status: "init" },
+    { id: 5, type: "Roll ", status: "init" },
+    { id: 6, type: "Roll ", status: "init" },
+    { id: 7, type: "Roll ", status: "init" },
+    { id: 8, type: "Roll ", status: "init" },
+    { id: 9, type: "Roll ", status: "init" },
+    { id: 10, type: "Roll ", status: "init" },
+    { id: 11, type: "Roll ", status: "init" },
+    { id: 12, type: "Roll ", status: "init" },
+    { id: 13, type: "Roll ", status: "init" },
+    { id: 14, type: "Roll ", status: "init" },
+    { id: 15, type: "Roll ", status: "init" },
+    { id: 16, type: "Roll ", status: "init" },
+    { id: 17, type: "Roll ", status: "init" },
+    { id: 18, type: "Roll ", status: "init" },
+    { id: 19, type: "Roll ", status: "init" },
+    { id: 20, type: "Roll ", status: "init" },
+  ];
+  

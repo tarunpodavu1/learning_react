@@ -1,0 +1,78 @@
+body {
+  font-family: "Open Sans Condensed";
+}
+.main {
+  margin-left: 30%;
+  margin-right: 25%;
+}
+.init {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 50px;
+  height: 50px;
+  margin: 25px;
+  text-align: center;
+  font-family: arial;
+}
+.init {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: blanchedalmond;
+  text-align: center;
+  font-family: arial;
+  float: left;
+  padding: 10px;
+}
+.clicked {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 50px;
+  height: 50px;
+  margin: 25px;
+  text-align: center;
+  font-family: arial;
+  color: white;
+}
+.clicked {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: grey;
+  text-align: center;
+  font-family: arial;
+  float: left;
+  padding: 10px;
+}
+.list {
+  margin-left: 82%;
+}
+.vertical {
+  border-left: 2px solid grey;
+  height: 65%;
+  position: absolute;
+  left: 70%;
+}
+.list1 {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin-left: 5%;
+}
+
+.list1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #4caf50;
+}
+
+.list1:hover {
+  background-color: #4caf50;
+  color: white;
+}
+.text {
+  margin-left: 78%;
+  text-decoration: underline;
+}
