@@ -57,6 +57,11 @@ h2 {
   top: 0;
   left: 0;
   width: 100%;
+  background: black;
+  color: white;
+  opacity: 0.8;
+  height: 50px;
+  text-align: center;
 }
 
 h2 span {

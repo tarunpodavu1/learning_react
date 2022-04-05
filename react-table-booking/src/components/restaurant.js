@@ -16,7 +16,7 @@ class Restaurant extends Component {
   }
 
 
-  handleModal =  (i) => {
+  showModal =  (i) => {
       // const {showModal} = this.state
       this.setState((prevState) => ({
         ...prevState,
@@ -31,7 +31,7 @@ class Restaurant extends Component {
       const [email, phone] = e.target
       // console.log(e, id);
       console.log(email.value, phone.value);
-      const {reservedId, tables} = this.state
+      const {reservedId, tables, showModal} = this.state
       const newTable = [...tables]
       // console.log(tables);
       console.log(newTable);
@@ -49,6 +49,7 @@ class Restaurant extends Component {
         ...prevState,
         email: email.value,
         phone: phone.value,
+        showModal: !showModal
       }))
 
       console.log(this.state);
@@ -84,7 +85,7 @@ class Restaurant extends Component {
         <div className="card" id="image" key={table.id}>
           <ul>
             <li className="list">
-              <img onClick={() => this.handleModal(i)} src={table.src} width="75%" height="75%" alt="" />
+              <img onClick={() => this.showModal(i)} src={table.src} width="75%" height="75%" alt="" />
               {table.status === 'reserved' && <h2>Table Reserved</h2>}
             </li>
           </ul>
@@ -102,7 +103,7 @@ class Restaurant extends Component {
           {this.state.showModal && (
             <Modal show={this.state.showModal}>
               <div className="center">
-                <button className="close" onClick={() => this.handleModal()}>X</button>
+                <button className="close" onClick={() => this.showModal()}>X</button>
               </div>
               <br />
               <h4 className="text">
