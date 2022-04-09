@@ -21,7 +21,7 @@ class Restaurant extends Component {
       this.setState((prevState) => ({
         ...prevState,
         showModal: !prevState.showModal,
-        reservedId: i+1,
+        reservedId: i,
       }))
       // console.log(this.state);
       // console.log(i);
@@ -80,13 +80,13 @@ class Restaurant extends Component {
 
   render() {
     //populate the page by mapping tables
-    let tableList = this.state.tables.map((table, i) => {
+    let tableList = this.state.tables.map((table) => {
       return (
         <div className="card" id="image" key={table.id}>
           <ul>
             <li className="list">
-              <img onClick={() => this.showModal(i)} src={table.src} width="75%" height="75%" alt="" />
-              {table.status === 'reserved' && <h2>Table Reserved</h2>}
+              <img onClick={() => this.showModal(table.id)} src={table.src} width="75%" height="75%" alt="" />
+              {table.status === 'reserved' && <h2><span>Table Reserved</span></h2>}
             </li>
           </ul>
         </div>
