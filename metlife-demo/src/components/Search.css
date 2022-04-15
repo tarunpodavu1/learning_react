@@ -1,0 +1,44 @@
+.searchwell{
+    background-color: rgba(0,97,160,1.0);
+    width: 100%;
+    height: 80px;
+
+}
+
+.searchbox1{
+    border-radius: 8px;
+    width: 20%;
+    position: relative;
+    left: 100px;
+    top: 20px;
+    border: transparent;
+}
+.searchbox2{
+    border-radius: 8px;
+    width: 20%;
+    position: relative;
+    left: 120px;
+    top: 20px;
+    border: transparent;
+    
+}
+.searchbox3{
+    border-radius: 8px;
+    width: 20%;
+    position: relative;
+    left: 110px;
+    top: 20px;
+    border: transparent;
+}
+
+
+.searchbtn{
+    position: relative;
+    left: 140px;
+    top: 23px;
+}
+
+h4{
+    margin-left: 10px;
+
+}

@@ -7,13 +7,22 @@
 
 .lang{
     margin-left: 900px;
-    color: black;
+    color: rgb(0,50,50)
+    
 }
 .prof{
     margin-left: 10px;
-    color: black;
+    color: rgb(0,50,50)
+
 }
 .home{
     padding-left: 10px;
     padding-top: 10px;
+    margin-left: 10px;
+
+}
+.navbar-brand{
+    margin-right: 75px;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
