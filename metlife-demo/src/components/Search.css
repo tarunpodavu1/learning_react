@@ -32,13 +32,23 @@
 }
 
 
-.searchbtn{
+.searchbtn1{
     position: relative;
     left: 140px;
     top: 23px;
 }
+.searchbtn2{
+    position: relative;
+    left: 150px;
+    top: 23px;
+}
+
 
 h4{
     margin-left: 10px;
 
+}
+
+.pagin{
+    width: 50%;
 }

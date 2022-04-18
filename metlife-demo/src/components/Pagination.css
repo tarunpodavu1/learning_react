@@ -1,0 +1,22 @@
+.pagNav{
+    margin-top: 10px;
+    margin-left: 60%;
+    /* border: solid rgb(241, 240, 240); */
+    /* border-top: 0px;
+    border-left: 0px; */
+    /* border-right: 0px; */
+    /* height: 40px; */
+    
+}
+.pagNav p{
+    margin-top: 5px;
+    margin-right: 7px;
+}
+
+.page-link:focus{
+    background-color: rgb(165, 165, 245);
+}
+
+.page-link:active{
+    background-color: rgb(165, 165, 245);
+}
