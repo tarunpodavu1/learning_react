@@ -9,6 +9,8 @@ import SignUp from './pages/SignUp'
 import ForgotPassword from './pages/ForgotPassword'
 import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
+import Category from "./pages/Category";
+import CreateListing from "./pages/CreateListing";
 
 
 const App = () => {
@@ -23,6 +25,7 @@ const App = () => {
           
           <Route path="/" element={<Explore/>}/>
           <Route path="/offers" element={<Offers/>}/>
+          <Route path="/category/:categoryName" element={<Category/>}/>
 
           {/* Private Route */}
           <Route path="/profile" element={<PrivateRoute />}>
@@ -33,6 +36,7 @@ const App = () => {
           <Route path="/sign-in" element={<SignIn/>}/>
           <Route path="/sign-up" element={<SignUp/>}/>
           <Route path="/forgot-password" element={<ForgotPassword/>}/>
+          <Route path="/create-listing" element={<CreateListing />}/>
 
         </Routes>
 

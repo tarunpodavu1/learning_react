@@ -36,7 +36,7 @@ const Navbar = () => {
                     width='36px' height='36px'
                     />
 
-                    <p className={pathMatchRoute('/offers') ? 'navbarListItemNameActive': 'navbarListItemName'}>Offer</p>
+                    <p className={pathMatchRoute('/offers') ? 'navbarListItemNameActive': 'navbarListItemName'}>Offers</p>
                 </li>
 
                 <li className="navbarListItem" onClick={() => navigate('/profile')}>
