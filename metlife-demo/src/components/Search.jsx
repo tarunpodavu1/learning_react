@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 import data from '../data'
 import Pagination from "./Pagination"
 import './Search.css'
-import InitialOrder from "./Table"
+// import InitialOrder from "./Table"
+import Footer from "./Footer"
+import {MDBIcon} from 'mdbreact'
 
 
 const Search = () => {
@@ -12,6 +14,7 @@ const Search = () => {
     const [searchData, setSearchData] = useState(data)
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(10)
+    const [sortData, setSortData] = useState(null)
 
     const [formData, setFormData] = useState({
         keyword:'',
@@ -19,6 +22,7 @@ const Search = () => {
         location:''
     })
 
+    var arrow = 'U+02191'
 
     const {keyword, title, location} = formData;
 
@@ -114,6 +118,7 @@ const Search = () => {
         
             setSearchData(data)
             setSearchTerm('')
+            setSortData(null)
         
     }
    
@@ -124,24 +129,51 @@ const Search = () => {
     const currentPosts = searchData.slice(indexOfFirstPost, indexOfLastPost)
 
     //Paginate
-    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
 
     const onSort = (e) => {
         console.log(e.target.id);
-        
+        // setSortData('asc')
         const nData = [...searchData]
         console.log('nData',nData);
         if(e.target.id === 'title'){
-            const sortedData = nData.sort((a, b) => a.title.localeCompare(b.title))
+            var sortedData = [...nData]
+            if(sortData === 'asc'){
+                sortedData = nData.sort((a, b) => a.title.localeCompare(b.title))
+                setSortData(null)      
+            }else{
+                sortedData = nData.sort((a, b) => b.title.localeCompare(a.title))
+                setSortData("asc")
+            }
             return setSearchData(sortedData)
         }
         else if(e.target.id ==='location'){
-            const sortedData = nData.sort((a, b) => a.location.localeCompare(b.location))
+            var sortedData = [...nData]
+
+            if(sortData === 'asc'){
+                 sortedData = nData.sort((a, b) => a.location.localeCompare(b.location))
+                 setSortData(null)
+                }
+            else{
+                 sortedData = nData.sort((a, b) => b.location.localeCompare(a.location))
+                 setSortData("asc")
+                }
             return setSearchData(sortedData)
         }
         else if(e.target.id ==='datePosted'){
-            const sortedData = nData.sort((a, b) => a.datePosted.localeCompare(b.datePosted))
+            var sortedData = [...nData]
+
+            if(sortData === 'asc'){
+                 sortedData = nData.sort((a, b) => a.datePosted.localeCompare(b.datePosted))
+                 setSortData(null)
+                }else{
+                 sortedData = nData.sort((a, b) => b.datePosted.localeCompare(a.datePosted))
+                 setSortData("asc")
+                }
+
             return setSearchData(sortedData)
         }else{
             return;
@@ -167,13 +199,26 @@ const Search = () => {
 
         {/* Table */}
         {/* <Pagination postsPerPage={postsPerPage} totalPosts={searchData.length} paginate={paginate}/>  */}
+        
+     
+
 
         <table className="table">
             <thead>
                 <tr>
-                <th scope="col"><a href="!#" id='title' onClick={onSort}>Title</a></th>
-                <th scope="col"><a href="!#" id='location' onClick={onSort}>Location(s)</a></th>
-                <th scope="col"><a href="!#" id='datePosted' onClick={onSort}>Date Posted</a></th>
+                <th scope="col"><a href="!#" id='title' onClick={onSort}>Title </a>
+                </th>
+                <th scope="col"><a href="!#" id='location' onClick={onSort}>Location(s) </a>
+                
+                </th>
+                <th scope="col"><a href="!#" id='datePosted' onClick={onSort}>Date Posted </a>
+                
+                </th>
+                <div className="chevron">
+                {sortData ? <span><MDBIcon fas icon="sort-amount-up" /> </span>: <span><MDBIcon fas icon="sort-amount-down" /></span>}
+                
+                </div>
+
                 </tr>
             </thead>
             <tbody>
@@ -188,9 +233,10 @@ const Search = () => {
         </table>
 
         <div className="pagin">
-         <Pagination postsPerPage={postsPerPage} totalPosts={searchData.length} paginate={paginate}/> 
+         <Pagination postsPerPage={postsPerPage} totalPosts={searchData.length} paginate={paginate} /> 
         </div>
-
+        
+        <Footer/>
     </>
   )
 }

@@ -1,6 +1,8 @@
 import './Pagination.css'
 
-const Pagination = ({postsPerPage, totalPosts, paginate}) => {
+const Pagination = ({postsPerPage, totalPosts, paginate, active}) => {
+
+  
 
     const pageNumbers = []
 
@@ -13,8 +15,8 @@ const Pagination = ({postsPerPage, totalPosts, paginate}) => {
         <ul className="pagination pagUl">
         <p>Pages: </p> 
             {pageNumbers.map(number => (
-                <li key={number} className='page-item'>
-                    <a onClick={() => paginate(number)} href="!#" className="page-link">{number}</a>
+                <li key={number} className='page-item' >
+                    <a onClick={() => paginate(number)} href="#" className="page-link">{number}</a>
                 </li>
             ))}
         </ul>
