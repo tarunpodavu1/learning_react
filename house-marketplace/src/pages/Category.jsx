@@ -10,6 +10,7 @@ const Category = () => {
   
   const [listings, setListings] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [lastFetchedListing, setLastFetchedListing] = useState(null)
   
   const params = useParams()
 
@@ -29,6 +30,9 @@ const Category = () => {
 
          //Execute the query and get a snapshot
          const querySnap = await getDocs(q)
+
+         const lastVisible = querySnap.docs[querySnap.docs.length - 1]
+         setLastFetchedListing(lastVisible)
 
         //  Loop through the snapshot and get the data
         const listings = []
@@ -54,6 +58,48 @@ const Category = () => {
   }, [params.categoryName])
 
 
+  // Pagination  / Load More
+  const onFetchMoreListings = async () => {
+      
+    try {
+      //Get a reference
+      const listingsRef = collection(db, 'listings')
+      
+      //Create a query
+      const q = query(listingsRef, 
+       where('type', '==', params.categoryName),
+       orderBy('timestamp', 'desc'), 
+       startAfter(lastFetchedListing),
+       limit(10)
+       )
+
+       //Execute the query and get a snapshot
+       const querySnap = await getDocs(q)
+
+       const lastVisible = querySnap.docs[querySnap.docs.length - 1]
+       setLastFetchedListing(lastVisible)
+
+      //  Loop through the snapshot and get the data
+      const listings = []
+      querySnap.forEach((doc) => {
+        return listings.push({
+          id: doc.id,
+          data: doc.data()
+        })
+      })
+
+      // Set the data to our state
+      setListings((prevState) => [...prevState, ...listings])
+      setLoading(false)
+
+    } catch (error) {
+        toast.error('Could not fetch Listings')
+    }
+
+  }
+
+
+
   return (
 
     <div className="category">
@@ -73,6 +119,13 @@ const Category = () => {
               ))} 
             </ul>
           </main>
+
+          <br />
+          <br />
+
+          {lastFetchedListing && (
+            <p className="loadMore" onClick={onFetchMoreListings}>Load More</p>
+          )}
         </>
         : <p>No Listings for {params.categoryName}</p>}
 

@@ -6,19 +6,20 @@ import {
     uploadBytesResumable,
     getDownloadURL,
   } from 'firebase/storage'
-import {addDoc, collection, serverTimestamp} from 'firebase/firestore'
+import {doc, updateDoc,getDoc, serverTimestamp} from 'firebase/firestore'
 import { db } from "../firebase.config"
 import { v4 as uuidv4 } from 'uuid'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Spinner from '../components/Spinner'
 import { toast } from "react-toastify"
 
-const CreateListing = () => {
+const EditListing = () => {
 
 
   // eslint-disable-next-line no-unused-vars
   const [geolocationEnabled, setGeolocationEnabled] = useState(false)
   const [loading, setLoading] = useState(false) 
+  const [listing, setlisting] = useState(false) 
 
   const [formData, setFormData] = useState({
       type: 'rent',
@@ -41,9 +42,38 @@ const CreateListing = () => {
  
   const auth = getAuth();
   const navigate = useNavigate()
+  const params  = useParams()
   const isMounted = useRef(true)
 
+    //Redirect if listing is not users
+    useEffect(() => {
+        if(listing && listing.userRef !== auth.currentUser.uid){
+            toast.error('You cannot edit the listing ')
+            navigate('/')
+        }
+    })
 
+
+  //For fetching the list to edit
+  useEffect(() => {
+    setLoading(true)
+    const fetchListing = async () => {
+        const docRef = doc(db, 'listings', params.listingId)
+        const docSnap = await getDoc(docRef)
+        if(docSnap.exists()){
+            setlisting(docSnap.data())
+            setFormData({...docSnap.data(), address: docSnap.data().location})
+            setLoading(false)
+        }else{
+            navigate('/')
+            toast.error('Lisitng does not exists')
+        }
+    }
+
+    fetchListing()
+  }, [params.listingId, navigate])
+
+  //Sets userRef to logged in user
   useEffect(() => {
 
       if(isMounted){
@@ -133,15 +163,12 @@ const CreateListing = () => {
           uploadTask.on(
             'state_changed',
             (snapshot) => {
-              const progress =
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-              console.log('Upload is ' + progress + '% done')
+            //   const progress =
+            //     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
               switch (snapshot.state) {
                 case 'paused':
-                  console.log('Upload is paused')
                   break
                 case 'running':
-                  console.log('Upload is running')
                   break
                 default:
                   break
@@ -164,7 +191,6 @@ const CreateListing = () => {
       const imgUrls = await Promise.all(
         [...images].map((image) => storeImage(image))
       ).catch((error) => {
-        console.log(error);
         setLoading(false)
         toast.error('Images not uploaded')
         return
@@ -184,7 +210,10 @@ const CreateListing = () => {
       delete formDataCopy.address
       !formDataCopy.offer && delete formDataCopy.discountedPrice
 
-      const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
+    //   const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
+      //Update listing
+      const docRef = doc(db, 'listings', params.listingId)
+      await updateDoc(docRef, formDataCopy)
       setLoading(false)
       toast.success('Listing saved')
       navigate(`/category/${formDataCopy.type}/${docRef.id}`)
@@ -228,7 +257,7 @@ const CreateListing = () => {
 
         <header>
             <p className="pageHeader">
-                Create a Listing
+                Edit Listing
             </p>
         </header>
 
@@ -498,7 +527,7 @@ const CreateListing = () => {
 
                         {/* Submit Button */}
                         <button type='submit' className='primaryButton createListingButton'>
-                            Create Listing
+                            Edit Listing
                         </button>
             </form>
 
@@ -506,4 +535,4 @@ const CreateListing = () => {
     </div>
   )
 }
-export default CreateListing
+export default EditListing
