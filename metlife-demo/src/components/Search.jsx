@@ -22,7 +22,7 @@ const Search = () => {
         location:''
     })
 
-    var arrow = 'U+02191'
+    // var arrow = 'U+02191'
 
     const {keyword, title, location} = formData;
 
